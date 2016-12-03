@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Add Todo
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-item>
+            <ion-label floating>addTodo</ion-label>
+            <ion-input type="text" [(ngModel)]="todoText"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-item>
+        <ion-label>Start Date</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.monthStart"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>End Date</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.monthEnd"></ion-datetime>
+    </ion-item>
+
+    <button ion-fab mini (click)="create()"><ion-icon name="add"></ion-icon></button>
+
+</ion-content>
