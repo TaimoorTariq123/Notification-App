@@ -1,0 +1,17 @@
+$web_orange : orange;
+.centerButton{
+    color: $web_orange;
+    width: auto;
+    align-items: center;
+}
+
+.centerLine{
+margin: 0 auto;
+}
+
+.centerLine {
+img {
+width: auto !important;
+align-items: center;
+}
+}

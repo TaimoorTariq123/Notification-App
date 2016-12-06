@@ -1,0 +1,36 @@
+<!--
+  Generated template for the CreatePost page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>createPost</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<ion-card>
+  <ion-card-header>
+    Create Post
+  </ion-card-header>
+  <ion-card-content>
+    Create a post which will show to your team members and other people's News feed.
+
+    <ion-list>
+
+  <ion-item>
+    <ion-label stacked>Write here</ion-label>
+    <ion-input type="text" [(ngModel)]="content"></ion-input>
+  </ion-item>
+<button ion-button full (click)="savePost()">Share</button>
+
+</ion-list>
+  </ion-card-content>
+</ion-card>
+
+</ion-content>

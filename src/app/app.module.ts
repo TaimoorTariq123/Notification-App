@@ -10,6 +10,7 @@ import { Dashboard } from '../pages/dashboard/dashboard';
 import { AddTodo } from '../pages/addTodo/addTodo';
 import { MenuPage } from "../pages/menu/menu"
 import { ProfilePage } from "../pages/profile/profile";
+import { CreatePostPage } from "../pages/create-post/create-post"
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCpy3zin1OWfPyFNL_dUwDFwxuMCumUKqw",
@@ -37,7 +38,8 @@ const myFirebaseFacebookConfig = {
     LoginPage,
     SignupPage,
     MenuPage,
-    ProfilePage
+    ProfilePage,
+    CreatePostPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -51,7 +53,8 @@ const myFirebaseFacebookConfig = {
     LoginPage,
     SignupPage,
     MenuPage,
-    ProfilePage
+    ProfilePage,
+    CreatePostPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

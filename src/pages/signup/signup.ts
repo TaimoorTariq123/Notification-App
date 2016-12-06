@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController, LoadingController } from 'ionic-angular';
-import { AngularFire  } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'signup-page',
@@ -8,8 +8,10 @@ import { AngularFire  } from 'angularfire2';
 })
 export class SignupPage {
 
-  userName: string;
+  userEmail: string;
+  userName : string;
   password: string;
+  gender : string;
 
   constructor(public navCtrl: NavController, public af: AngularFire, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.af.auth.subscribe(auth => console.log(auth));
@@ -22,8 +24,15 @@ export class SignupPage {
     });
     loading.present();
 
-    this.af.auth.createUser({ email: this.userName, password: this.password }).then((data) => {
+    this.af.auth.createUser({ email: this.userEmail, password: this.password}).then((data) => {
       loading.dismiss();
+      this.af.database.object('/users/'+ data.auth.uid).set({
+        name : this.userName,
+        pswd : this.password,
+        email : this.userEmail,
+        gender : this.gender
+      })
+      
       let toast = this.toastCtrl.create({
         message: 'User was added successfully',
         duration: 3000,

@@ -38,8 +38,7 @@ export class LoginPage {
       { provider: AuthProviders.Password, method: AuthMethods.Password })
        .then((success)=>{
        console.log("login success : ", success);
-      //  localStorage.removeItem(key);
-       localStorage.setItem("key",success.uid)     
+       localStorage.setItem("key",success.uid);     
       })
       .catch((err)=>{
       console.log("login err", err)
@@ -50,6 +49,9 @@ export class LoginPage {
   }
 
   loader() {
+    if(!this.userName || !this.password){
+        return;
+    }
     let loading = this.loadingCtrl.create({
       content: "Please wait...",
     });
@@ -59,6 +61,7 @@ export class LoginPage {
 // =======
     
     this.loginFirebase().then((res) => {
+      console.log(res);
         loading.dismiss();
         this.navCtrl.push(MenuPage);
     },

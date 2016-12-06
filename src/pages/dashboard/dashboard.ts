@@ -17,6 +17,8 @@ export class Dashboard {
     authUid: any;
     testCheckboxOpen: any;
     testCheckboxResult: any;
+    userName : string;
+    uid: any;
 
 
     key: any[] = [];
@@ -28,6 +30,12 @@ export class Dashboard {
         // this.af.auth.subscribe((auth) => { this.authUid = auth.uid });
         // this.list = this.af.database.list('TodoAppDatabase/users/' + this.authUid);
         this.load();
+        this.uid = localStorage.getItem("key");
+        var callData = this.af.database.object('users/'+ this.uid, {preserveSnapshot:true});
+        callData.subscribe(snapshot =>{
+        this.userName = snapshot.val().name;
+        console.log(this.userName)
+   })
     }
 
     load() {

@@ -6,6 +6,7 @@ import { AngularFire } from "angularfire2";
 import { Dashboard } from "../dashboard/dashboard";
 import { ProfilePage } from "../profile/profile";
 import { LoginPage } from "../login/login";
+import { CreatePostPage } from "../create-post/create-post"
 
 
 /*
@@ -21,16 +22,19 @@ import { LoginPage } from "../login/login";
 export class MenuPage {
   rootPage: any  = Dashboard;
   @ViewChild(Nav) nav: Nav;
+  userData : any;
+  uid : any;
 
   pages : Array<{title : string, component: any}>
   constructor(public af: AngularFire,public navCtrl: NavController,app: App,public menu: MenuController) {
 
  this.pages = [
-   {title : 'Share Something..', component: status},
+   {title : 'Share Something..', component: CreatePostPage},
    {title : 'Profile' , component: ProfilePage},
    {title : 'Logout', component: ""}
    ]
   }
+
 
  openPage(page){
 if(page.title == 'Logout'){
