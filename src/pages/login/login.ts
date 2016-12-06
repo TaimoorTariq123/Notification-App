@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController  } from 'ionic-angular';
+import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+
 
 import {SignupPage} from '../signup/signup';
 import {Dashboard} from '../dashboard/dashboard';
 import {MenuPage  } from "../menu/menu"
+
+
+
 
 @Component({
   selector: 'login-page',
@@ -17,7 +21,7 @@ export class LoginPage {
   tempFirebaseData: any;
 
 
-  constructor(public navCtrl: NavController, public af: AngularFire, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public af: AngularFire, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
     this.userName = "", this.password = "";
   }
 
@@ -50,7 +54,30 @@ export class LoginPage {
       content: "Please wait...",
     });
     loading.present();
-    this.loginFirebase().then((res) => { loading.dismiss(); this.navCtrl.push(MenuPage);}, (err) => { console.log(err)})
+// <<<<<<< HEAD
+    // this.loginFirebase().then((res) => { loading.dismiss(); this.navCtrl.push(MenuPage);}, (err) => { console.log(err)})
+// =======
+    
+    this.loginFirebase().then((res) => {
+        loading.dismiss();
+        this.navCtrl.push(MenuPage);
+    },
+
+      (err) => {
+          loading.dismiss();
+          console.log("Error " + err);
+      let toast = this.toastCtrl.create({
+          message: err,
+          duration: 3000,
+          position: 'top'
+        })
+
+        toast.present().then((done) => {
+              
+        })
+
+      })
+// >>>>>>> 578a3f833ea01ff565d1a01dad3deea57c154c90
   }
 
 }
