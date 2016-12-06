@@ -8,7 +8,8 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { Dashboard } from '../pages/dashboard/dashboard';
 import { AddTodo } from '../pages/addTodo/addTodo';
-
+import { MenuPage } from "../pages/menu/menu"
+import { ProfilePage } from "../pages/profile/profile";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCpy3zin1OWfPyFNL_dUwDFwxuMCumUKqw",
@@ -20,8 +21,13 @@ export const firebaseConfig = {
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Password,
   method: AuthMethods.Password,
-}
 
+  
+}
+const myFirebaseFacebookConfig = {
+
+
+}
 
 @NgModule({
   declarations: [
@@ -30,10 +36,12 @@ const myFirebaseAuthConfig = {
     Dashboard,
     LoginPage,
     SignupPage,
+    MenuPage,
+    ProfilePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +49,9 @@ const myFirebaseAuthConfig = {
     AddTodo,
     Dashboard,
     LoginPage,
-    SignupPage
+    SignupPage,
+    MenuPage,
+    ProfilePage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
 import {AddTodo} from '../addTodo/addTodo';
 import {FirebaseListObservable, AngularFire} from 'angularfire2';
-
+import { MenuPage } from "../menu/menu";
 
 @Component({
     selector: 'dashboard',
@@ -25,8 +25,8 @@ export class Dashboard {
     key1: any[] = [];
 
     constructor(public navCtrl: NavController, public af: AngularFire, public alertCtrl: AlertController) {
-        this.af.auth.subscribe((auth) => { this.authUid = auth.uid });
-        this.list = this.af.database.list('TodoAppDatabase/users/' + this.authUid);
+        // this.af.auth.subscribe((auth) => { this.authUid = auth.uid });
+        // this.list = this.af.database.list('TodoAppDatabase/users/' + this.authUid);
         this.load();
     }
 
@@ -46,7 +46,7 @@ export class Dashboard {
 
     addNewTodo() {
         
-        this.navCtrl.push(AddTodo);
+        this.navCtrl.push(MenuPage);
 
     }
 

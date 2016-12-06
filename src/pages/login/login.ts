@@ -4,7 +4,7 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
 import {SignupPage} from '../signup/signup';
 import {Dashboard} from '../dashboard/dashboard';
-
+import {MenuPage  } from "../menu/menu"
 
 @Component({
   selector: 'login-page',
@@ -27,8 +27,19 @@ export class LoginPage {
 
   loginFirebase() {
 
-    this.tempFirebaseData = this.af.auth.login({ email: this.userName, password: this.password },
+    this.tempFirebaseData = this.af.auth.login({ 
+      email: this.userName, 
+      password: this.password }
+     ,
       { provider: AuthProviders.Password, method: AuthMethods.Password })
+       .then((success)=>{
+       console.log("login success : ", success);
+      //  localStorage.removeItem(key);
+       localStorage.setItem("key",success.uid)     
+      })
+      .catch((err)=>{
+      console.log("login err", err)
+      })
 
     return new Promise((resolve, reject) => resolve(this.tempFirebaseData));
 
@@ -39,7 +50,7 @@ export class LoginPage {
       content: "Please wait...",
     });
     loading.present();
-    this.loginFirebase().then((res) => { loading.dismiss(); this.navCtrl.push(Dashboard);}, (err) => { console.log(err)})
+    this.loginFirebase().then((res) => { loading.dismiss(); this.navCtrl.push(MenuPage);}, (err) => { console.log(err)})
   }
 
 }
