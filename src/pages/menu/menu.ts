@@ -42,8 +42,12 @@ if(page.title == 'Logout'){
    this.af.auth.logout();
    this.navCtrl.setRoot(LoginPage)
   }
+  else if(page.title== 'Share Something..'){
+    console.log("sahe hai")
+    this.navCtrl.push(CreatePostPage);
+  }
 else { 
-  this.nav.setRoot(page.component)
+  this.navCtrl.push(page.component)
 }
 this.menu.close()
  }

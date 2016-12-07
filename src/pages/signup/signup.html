@@ -1,14 +1,15 @@
 <ion-header>
-    <ion-navbar >
+    <ion-navbar color="primary">
         <ion-title>
             Sign-Up
         </ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding center text-center>
+    <img src="../assets/images/notify.png" class="minify-size" />
+    <br>
     <ion-list>
-
         <ion-item>
             <ion-label floating>User Name</ion-label>
             <ion-input type="text" [(ngModel)]="userName">></ion-input>
@@ -36,7 +37,8 @@
     <ion-radio value="female"></ion-radio>
   </ion-item>
 </ion-list>
-
-    <button ion-button (click)="signup()">Register</button>
+    <br>
+    <button ion-button icon-left (click)="signup()"><ion-icon name="ios-add-circle-outline"></ion-icon>&nbsp; Register</button>
+    <!--<button ion-button (click)="signup()">Register</button>-->
 
 </ion-content>

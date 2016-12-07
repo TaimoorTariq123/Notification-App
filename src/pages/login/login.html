@@ -1,14 +1,15 @@
 <ion-header>
     <ion-navbar >
-        <ion-title primary>
+        <ion-title color="primary">
             Login
         </ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding center text-center>
 
-    <img src="../assets/images/logo.png" />
+    <img src="../assets/images/notify.png" class="decrease-size" />
+    <br> <br>
     <ion-list>
 
         <ion-item>
@@ -22,9 +23,11 @@
         </ion-item>
 
     </ion-list>
+    <br>
+    <button ion-button icon-left (click)="loader()"><ion-icon name="ios-unlock-outline"></ion-icon>&nbsp; Login</button>
 
-    <button ion-button (click)="loader()">Login</button>
-    
-    <a (click)="goToSignUpPage()"> register new user </a>
+    <!--<button ion-button (click)="loader()" center text-center>Login</button>-->
+    <br> <br>
+    <a (click)="goToSignUpPage()"> Register new user </a>
 
 </ion-content>

@@ -11,17 +11,14 @@ import { MenuPage } from "../menu/menu";
 })
 
 export class Dashboard {
-
-    list: FirebaseListObservable<any[]>;
-    items: FirebaseListObservable<any[]>;
-    authUid: any;
+    items:any;
+    uid: any;
     testCheckboxOpen: any;
     testCheckboxResult: any;
     userName : string;
-    uid: any;
 
 
-    key: any[] = [];
+    list: any[] = [];
     value: any[] = [];
     temp: any[] = [];
     key1: any[] = [];
@@ -29,31 +26,32 @@ export class Dashboard {
     constructor(public navCtrl: NavController, public af: AngularFire, public alertCtrl: AlertController) {
         // this.af.auth.subscribe((auth) => { this.authUid = auth.uid });
         // this.list = this.af.database.list('TodoAppDatabase/users/' + this.authUid);
-        this.load();
         this.uid = localStorage.getItem("key");
         var callData = this.af.database.object('users/'+ this.uid, {preserveSnapshot:true});
         callData.subscribe(snapshot =>{
         this.userName = snapshot.val().name;
-        console.log(this.userName)
-   })
+        });
+        console.log("pehle");
+        console.log(this.list);
+        this.load();
     }
 
     load() {
-
-        this.items = this.af.database.list('TodoAppDatabase/users/' + this.authUid, { preserveSnapshot: true });
-        this.items
-            .subscribe(snapshots => {
+        this.items = [];
+        console.log("ye dekho");
+        console.log(this.list);
+        console.log("complete");
+        this.items = this.af.database.list('user-status', { preserveSnapshot: true });
+        this.items.subscribe(snapshots => {
+            console.log("Chal gya");
                 snapshots.forEach(snapshot => {
-                    this.key.push(snapshot.key);
-                    this.value.push(snapshot.val());
-                    console.log(snapshot.val());
-                    
+                    this.list.push(snapshot.val());
                 });
             })
     }
 
     addNewTodo() {
-        
+
         this.navCtrl.push(MenuPage);
 
     }
@@ -97,8 +95,8 @@ export class Dashboard {
 
     delete(data, index) {
         for (var i = 0; i < data.length; ++i) {
-            this.items = this.af.database.list('TodoAppDatabase/users/' + this.authUid + '/' + this.key[index]);
-            this.items.remove(data[i]);
+            // this.items = this.af.database.list('TodoAppDatabase/users/' + this.uid + '/' + this.key[index]);
+            // this.items.remove(data[i]);
         }
     }
 }

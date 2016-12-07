@@ -15,22 +15,28 @@ import {Dashboard} from '../dashboard/dashboard';
 })
 export class CreatePostPage {
 content:string;
+userData : any;
 uid:any;
   constructor(public navCtrl: NavController, public af: AngularFire, public loadingCtrl: LoadingController) {
-    this.uid = localStorage.getItem("key")
+    this.uid = localStorage.getItem("key");
+    var callData = this.af.database.object('users/'+ this.uid, {preserveSnapshot:true});
+        callData.subscribe(snapshot =>{
+        this.userData = snapshot.val();
+        });
   }
 
-savePost(){
+savePost():void{
 if(!this.content){
   return;
 }
 const items = this.af.database.list("user-status");
 items.push({
   text : this.content,
+  userName : this.userData.name,
   author : this.uid
 })
 this.content = "";
-this.navCtrl.push(Dashboard);
+this.navCtrl.pop();
 }
 
   ionViewDidLoad() {
