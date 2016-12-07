@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AngularFire } from "angularfire2";
 
 /*
   Generated class for the Profile page.
@@ -12,8 +13,12 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
+  userName : string;
+  password : string;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,public af :AngularFire) {
+    this.af.database.list('/users')
+  }
 
   ionViewDidLoad() {
     console.log('Hello ProfilePage Page');

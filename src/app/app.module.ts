@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { MyApp } from './app.component';
+import { DataService } from "../providers/data-service"
 
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -56,6 +57,6 @@ const myFirebaseFacebookConfig = {
     ProfilePage,
     CreatePostPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [DataService,{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
