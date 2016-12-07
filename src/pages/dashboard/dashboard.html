@@ -1,28 +1,57 @@
 <ion-header>
-    <ion-navbar>
-     <button menuToggle>
-      <ion-icon ion-navicon-round name="menu" style="font-size : 30px"></ion-icon>
+    <ion-navbar color="primary">
+     <button ion-button icon-only menuToggle>
+      <ion-icon name="menu" class="navButton"></ion-icon>
      </button>
         <ion-title>
-            Dashboard
+            {{userName}}
         </ion-title>
      </ion-navbar>
 </ion-header>
 
 <ion-content>
-Hello {{userName}}
     <!--<ion-fab top right edge>
         <button ion-fab mini (click)="addNewTodo()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>-->
 
 
-    <div *ngFor="let i of key; let index = index">
-        <ion-card (click)="showCheckbox(index)">
+    <div *ngFor="let i of list; let index = index">
+        <!--<ion-card (click)="showCheckbox(index)">
             <ion-item>
-                 {{i}}
+                 {{i.text}}
             </ion-item>
-        </ion-card>
-    </div>
+        </ion-card>-->
 
+<ion-card>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="../../assets/images/boy.png">
+    </ion-avatar>
+    <h2>{{i.userName}}</h2>
+    <p>5 minutes ago</p>
+  </ion-item>
+
+  <ion-card-content>
+    <p>{{i.text}}</p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+        &nbsp; &nbsp;
+        <button ion-button icon-left>
+            <ion-icon name="md-thumbs-up"></ion-icon>
+            Like
+        </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left>
+          <ion-icon name="ios-text"></ion-icon> Comment</button>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
+
+
+    </div>
 
 </ion-content>

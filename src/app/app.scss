@@ -14,3 +14,15 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.decrease-size{
+    width:50%;
+    height:24vh;
+}
+.minify-size{
+    width:30%;
+    height:15vh;
+}
+.navButton{
+    font-size : 30px;
+}
