@@ -80,7 +80,7 @@ SignupData(userName, userEmail, password,gender){
       console.log("login err", err)
 
       })
-
+   c
     return new Promise((resolve, reject) => resolve(this.tempFirebaseData));
 
   }
